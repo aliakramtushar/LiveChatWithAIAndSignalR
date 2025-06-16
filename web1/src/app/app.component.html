@@ -1,0 +1,8 @@
+<h2>SignalR Chat - {{ user }}</h2>
+
+<input [(ngModel)]="message" placeholder="Enter message..." />
+<button (click)="sendMessage()" [disabled]="!isConnected">Send</button>
+
+<ul>
+  <li *ngFor="let msg of messages">{{ msg }}</li>
+</ul>
