@@ -1,8 +1,32 @@
-<h2>SignalR Chat - {{ user }}</h2>
+<div
+  style="max-width: 600px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; font-family: Arial, sans-serif; background-color: #f9f9f9;">
 
-<input [(ngModel)]="message" placeholder="Enter message..." />
-<button (click)="sendMessage()" [disabled]="!isConnected">Send</button>
+  <!-- Header -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+    <h2 style="margin: 0;">SignalR Chat - {{ user }}</h2>
 
-<ul>
-  <li *ngFor="let msg of messages">{{ msg }}</li>
-</ul>
+    <!-- Chat Mode Dropdown -->
+    <select [(ngModel)]="selectedMode" style="padding: 6px 10px; border-radius: 5px;">
+      <option value="ai">Chat with AI</option>
+      <option value="private">One to One</option>
+    </select>
+  </div>
+
+  <!-- Message List -->
+  <ul style="list-style: none; padding: 0; max-height: 300px; overflow-y: auto; margin-bottom: 15px;">
+    <li *ngFor="let msg of messages"
+      style="background-color: #e2f0ff; padding: 10px; margin-bottom: 8px; border-radius: 8px;">
+      {{ msg }}
+    </li>
+  </ul>
+
+  <!-- Input and Send Button -->
+  <div style="display: flex; gap: 10px;">
+    <input [(ngModel)]="message" placeholder="Enter message..." (keydown.enter)="sendMessage()"
+      style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"/>
+    <button (click)="sendMessage()" [disabled]="!isConnected"
+      style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Send
+    </button>
+  </div>
+</div>

@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   user = 'User 1'; // change manually to 'User2' in second tab/port
   message = '';
   messages: string[] = [];
+  selectedMode: string = 'ai'; // Default to Chat with AI
   private hubConnection!: signalR.HubConnection;
 
   isConnected = false;
@@ -40,10 +41,18 @@ export class AppComponent implements OnInit {
       alert('Connection not established yet. Please wait.');
       return;
     }
-    if (this.message) {
-      this.hubConnection.invoke('SendMessage', this.user, this.message)
-        .catch(err => console.error(err));
-      this.message = '';
+    if (this.selectedMode === 'ai') {
+      if (this.message) {
+        this.hubConnection.invoke('SendMessageWithAi', this.user, this.message)
+          .catch(err => console.error(err));
+        this.message = '';
+      }
+    } else {
+      if (this.message) {
+        this.hubConnection.invoke('SendMessage', this.user, this.message)
+          .catch(err => console.error(err));
+        this.message = '';
+      }
     }
   }
 }
