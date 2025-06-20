@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://localhost:7183/chathub')
+      .withUrl('http://192.168.68.187:5000/chathub')
+      // .withUrl('https://localhost:5000/chathub')
       .withAutomaticReconnect()
       .build();
 

@@ -7,7 +7,7 @@ namespace SignalRChatSystem.Services
     public class OpenRouterService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiKey = "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"; // Replace with your key
+        private readonly string _apiKey = "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"; // Replace with your key
         private readonly string dataModel = "mistralai/devstral-small:free";
 
         public OpenRouterService()

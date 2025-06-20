@@ -11,7 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
-        policy.WithOrigins("http://localhost:4200", "http://localhost:4201", "https://localhost:7183")
+        policy.WithOrigins("http://localhost:4200", "http://localhost:4201", "https://localhost:7183", "http://192.168.68.187:4200", "http://192.168.68.187:4201")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials());
@@ -37,4 +37,4 @@ app.MapControllers();
 app.UseCors();
 app.MapHub<ChatHub>("/chathub");
 
-app.Run();
+app.Run("http://0.0.0.0:5000");
