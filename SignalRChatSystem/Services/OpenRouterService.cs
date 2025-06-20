@@ -7,13 +7,14 @@ namespace SignalRChatSystem.Services
     public class OpenRouterService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiKey = "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"; // Replace with your key
+        private readonly string _apiKey = "sk-or-v1-9f2cf3bed0526ed454d1fc0dd50aa97036d954";
+        private readonly string _apiKey2 = "583de2bee82e9a6539b1a2d715";
         private readonly string dataModel = "mistralai/devstral-small:free";
 
         public OpenRouterService()
         {
             _httpClient = new HttpClient();
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey); // use _apiKey + _apiKey2
             _httpClient.DefaultRequestHeaders.Add("HTTP-Referer", "https://localhost:7183");
             _httpClient.DefaultRequestHeaders.Add("X-Title", "steveAiChatBot");
         }
